@@ -1,0 +1,88 @@
+:root {
+  --bg: #0f172a;
+  --surface: #111827;
+  --text: #e5e7eb;
+  --accent: #60a5fa;
+  --muted: #9ca3af;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid #1f2937;
+}
+
+.app-header h1 { font-size: 18px; margin: 0; }
+
+nav { display: flex; gap: 8px; }
+.nav-btn {
+  background: #1f2937;
+  color: var(--text);
+  border: 1px solid #374151;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.nav-btn:hover { border-color: var(--accent); color: #fff; }
+
+main { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
+.panel { display: none; }
+.panel.active { display: block; }
+
+.detector-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.video-stack { position: relative; background: #0b1220; border: 1px solid #1f2937; border-radius: 8px; overflow: hidden; }
+#video { width: 100%; height: auto; display: block; }
+#overlay { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+
+.detector-info { background: #0b1220; border: 1px solid #1f2937; border-radius: 8px; padding: 16px; }
+.status { color: var(--muted); margin-bottom: 8px; }
+.mood-box { background: #111b2f; border: 1px solid #1f2a3f; border-radius: 8px; padding: 12px; margin-bottom: 12px; }
+.mood-box h2 { margin: 0 0 8px; }
+#mood { font-size: 24px; font-weight: 600; }
+.suggestions h3 { margin: 0 0 8px; }
+.suggestions ul { margin: 0; padding-left: 18px; }
+
+.breathing-container { display: grid; grid-template-columns: 240px 1fr; gap: 16px; }
+.breathing-circle { width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(closest-side, #1f2937, #0b1220); margin: auto; box-shadow: 0 0 32px rgba(96,165,250,0.25); }
+.breathing-controls { display: flex; align-items: center; gap: 8px; }
+.breathing-controls button { background: #1f2937; color: var(--text); border: 1px solid #374151; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+.breathing-controls button:hover { border-color: var(--accent); }
+
+.journal-container { background: #0b1220; border: 1px solid #1f2937; border-radius: 8px; padding: 16px; }
+#journal-text { width: 100%; background: #0b1220; color: var(--text); border: 1px solid #1f2937; border-radius: 6px; padding: 8px; }
+.journal-actions { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+.journal-actions button { background: #1f2937; color: var(--text); border: 1px solid #374151; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+
+.tips-container { background: #0b1220; border: 1px solid #1f2937; border-radius: 8px; padding: 16px; }
+.tips-list { margin: 0; padding-left: 18px; }
+
+.app-footer { text-align: center; padding: 16px; color: var(--muted); }
+
+/* Breathing animation states */
+.inhale { animation: inhale 4s ease-in forwards; }
+.hold { animation: hold 7s linear forwards; }
+.exhale { animation: exhale 8s ease-out forwards; }
+
+@keyframes inhale { from { transform: scale(0.8); } to { transform: scale(1.05); } }
+@keyframes hold { from { transform: scale(1.05); } to { transform: scale(1.05); } }
+@keyframes exhale { from { transform: scale(1.05); } to { transform: scale(0.8); } }

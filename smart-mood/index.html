@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Mood Detection & Improvement</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <script defer type="module" src="./main.js"></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Smart Mood Detection & Improvement</h1>
+      <nav>
+        <button class="nav-btn" data-target="#detector">Mood Detector</button>
+        <button class="nav-btn" data-target="#breathing">Breathing</button>
+        <button class="nav-btn" data-target="#journal">Journal</button>
+        <button class="nav-btn" data-target="#tips">Tips</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="detector" class="panel active">
+        <div class="detector-container">
+          <div class="video-stack">
+            <video id="video" autoplay muted playsinline></video>
+            <canvas id="overlay"></canvas>
+          </div>
+          <div class="detector-info">
+            <div class="status" id="status">Loading models...</div>
+            <div class="mood-box">
+              <h2>Current Mood</h2>
+              <div id="mood">Detecting...</div>
+            </div>
+            <div class="suggestions">
+              <h3>Suggestions</h3>
+              <ul id="suggestions-list"></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="breathing" class="panel">
+        <div class="breathing-container">
+          <div class="breathing-circle" id="breathing-circle"></div>
+          <div class="breathing-controls">
+            <button id="start-breathing">Start</button>
+            <button id="stop-breathing">Stop</button>
+            <span id="breathing-status">Press Start to begin 4-7-8 breathing.</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="journal" class="panel">
+        <div class="journal-container">
+          <h2>Quick Journal</h2>
+          <textarea id="journal-text" rows="8" placeholder="How are you feeling? Write a few sentences..."></textarea>
+          <div class="journal-actions">
+            <button id="analyze-text">Analyze Sentiment</button>
+            <span id="journal-sentiment">Sentiment: N/A</span>
+          </div>
+          <div class="journal-suggestions">
+            <h3>Suggestions</h3>
+            <ul id="journal-suggestions"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="tips" class="panel">
+        <div class="tips-container">
+          <h2>Wellness Tips</h2>
+          <ul class="tips-list">
+            <li>Take a 5-minute mindful break. Close your eyes, breathe.</li>
+            <li>Listen to calming music or nature sounds.</li>
+            <li>Write three things you’re grateful for today.</li>
+            <li>Get some sunlight and a short walk.</li>
+            <li>Message a friend and share how you feel.</li>
+            <li>Hydrate and have a nutritious snack.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <small>For wellness support only; not medical advice.</small>
+    </footer>
+  </body>
+  </html>
